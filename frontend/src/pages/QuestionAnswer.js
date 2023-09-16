@@ -38,8 +38,20 @@ export default function QuestionAnswer(props){
             )
     }
 
+    function checkAllAnswered(total, quest){
+        return(
+            total&quest.options.map(opt=>opt.selected).reduce((tot,num)=>tot||num,false)
+        )
+    }
+
     const score = quiz.reduce(getSumCorrect, 0)
     const count = quiz.length
+    const allAnswered = quiz.reduce(checkAllAnswered, true)
+    
+    function doNothing(){
+        //pass
+    }
+
     return(
         <div className="question-answer">
             {questions}
@@ -50,7 +62,7 @@ export default function QuestionAnswer(props){
                         <button className="action-button check-answers" onClick={reset}>Play again</button>
                     </div>
                     :
-                    <button className="action-button check-answers" onClick={checkAnswers}>Check answers</button>}
+                    <button className={allAnswered?"action-button check-answers":"action-button check-answers all-not-answered"}onClick={allAnswered?checkAnswers:doNothing}>Check answers</button>}
             </div>
             
         </div>

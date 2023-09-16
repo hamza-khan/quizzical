@@ -134,3 +134,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+.all-not-answered{
+  background: gray;
+}
