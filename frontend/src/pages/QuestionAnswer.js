@@ -4,7 +4,7 @@ import React from "react"
 
 
 export default function QuestionAnswer(props){
-    const [quiz, setQuiz] = React.useState(Questions)
+    const [quiz, setQuiz] = React.useState([])
     const [check, setCheck] = React.useState(false)
     const questions = quiz.map(quest=><QuestionCard
                                             quest={quest}
@@ -51,6 +51,9 @@ export default function QuestionAnswer(props){
     function doNothing(){
         //pass
     }
+    React.useEffect(()=>{
+        setQuiz(Questions)
+    },[props.start])
 
     return(
         <div className="question-answer">
