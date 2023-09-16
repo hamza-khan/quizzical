@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Karla:ital,wght@0,700;0,800;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter;
+}
+
+body {
+  background: #1C1C1C;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app{
+  background: #F5F7FB;
+  width: 650px;
+  height: 550px;
+  position: relative;
+  overflow: hidden;
+}
+
+.top-right-design{
+  position: absolute;
+  right: -10px;
+  margin: 0;
+}
+
+.bottom-left-design{
+  position: absolute;
+  bottom: 0;
+}
+
+.intro{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+}
+
+.action-button{
+  background-color: #4D5B9E;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  background: #4D5B9E;
+  cursor: pointer;
+}
+
+.action-button:active{
+  transform: scale(0.98);
+}
+
+.action-intro{
+  width: 193px;
+  height: 52px;
+  font-size: 1.2rem;
+}
+
+.question-answer{
+  width: 90%;
+  margin:auto;
+  padding: 15% 0 15% 10%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.the-question{
+  font-size: 1.05rem;
+  font-weight: bolder;
+  color: #293264;
+
+}
+
+.the-options{
+  display: flex;
+  gap: 5px;
+  flex-wrap:wrap
+}
+
+.the-option{
+
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  width: 120.063px;
+  height: 30.047px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #293264;
+  cursor: pointer;
+}
+
+.the-option:active{
+  transform: scale(0.95);
+}
+
+.selected{
+  background-color: #D6DBF5;
+}
+
+.correct{
+  background-color: #94D7A2;
+}
+
+.wrong{
+  background-color: #F8BCBC;
+}
+
+.not-selected{
+  border-radius: 7.942px;
+  border: 0.794px solid #4D5B9E;
+}
+
+.check-answers{
+  width: 220px;
+  padding: 12px 0;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.bottom-elements{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
