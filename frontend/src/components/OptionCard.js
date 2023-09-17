@@ -1,3 +1,4 @@
+import React from "react"
 export default function OptionCard(props){
     let classes = "the-option"
 

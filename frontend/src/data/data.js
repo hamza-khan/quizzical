@@ -22,8 +22,8 @@ const Questions = [
     {
         question: "What is the hottest planet in our Solar System?",
         options:[
-            {option:"Mercury", correct:false, selected:false, id:1},
-            {option:"Venus", correct:true, selected:false, id:2},
+            {option:"Mercury", correct:true, selected:false, id:1},
+            {option:"Venus", correct:false, selected:false, id:2},
             {option:"Mars", correct:false, selected:false, id:3},
             {option:"Saturn", correct:false, selected:false, id:4},
         ],
