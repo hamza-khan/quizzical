@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 
 import crud, schemas, models
 from database import sessionLocal1, engine
@@ -7,6 +8,19 @@ from database import sessionLocal1, engine
 app=FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
+
+origins = [
+    "http://localhost:3000",
+    "localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*']
+)
 
 def get_db():
     db = sessionLocal1()
@@ -30,9 +44,6 @@ def get_sessoin(session_id: int, db: Session = Depends(get_db)):
 
 @app.post('/sessions/', tags=['sessions'], response_model=schemas.PlaySessions)
 def post_session(session: schemas.CreatePlaySession, mydb: Session = Depends(get_db)):
-    print("*******main********")
-    print(mydb)
-    print("*******main********")
     return crud.add_a_session(db=mydb, session=session)
 
 @app.patch('/session/{session_id}', tags=['sessions'], response_model=schemas.PlaySessions)
@@ -82,7 +93,7 @@ def get_option(option_id: int, db: Session = Depends(get_db)):
 
 @app.post('/options/', tags=['options'], response_model=schemas.Options)
 def post_question(option: schemas.CreateOptions, db: Session = Depends(get_db)):
-    return crud.add_an_option(db=db, question=option)
+    return crud.add_an_option(db=db, option=option)
 
 @app.patch('/option/{option_id}', tags=['options'], response_model=schemas.Options)
 def update_option(option_id: int, option: schemas.CreateOptions, db: Session = Depends(get_db)):

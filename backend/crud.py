@@ -54,7 +54,7 @@ def get_one_question(db: Session, question_id: int):
 
 def add_a_question(db:Session, question: schemas.CreateQuestions):
     db_question = models.Questions(
-        started_at = question.started_at
+        question = question.question
     )
     db.add(db_question)
     db.commit()
@@ -94,9 +94,12 @@ def get_all_options(db: Session, skip: int = 0, limit: int = 5):
 def get_one_option(db: Session, option_id: int):
     return db.query(models.Options).filter(models.Options.id==option_id).first()
 
-def add_a_option(db:Session, option: schemas.CreateOptions):
+def add_an_option(db:Session, option: schemas.CreateOptions):
     db_option = models.Options(
-        started_at = option.started_at
+        option = option.option,
+        question_id = option.question_id,
+        selected = option.selected,
+        correct = option.correct
     )
     db.add(db_option)
     db.commit()

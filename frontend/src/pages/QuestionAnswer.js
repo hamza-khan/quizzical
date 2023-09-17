@@ -1,10 +1,9 @@
 import QuestionCard from "../components/QuestionCard"
-import Questions from "../data/data"
 import React from "react"
 
 
 export default function QuestionAnswer(props){
-    const [quiz, setQuiz] = React.useState([])
+    const [quiz, setQuiz] = React.useState(props.quiz)
     const [check, setCheck] = React.useState(false)
     const questions = quiz.map(quest=><QuestionCard
                                             quest={quest}
@@ -52,7 +51,8 @@ export default function QuestionAnswer(props){
         //pass
     }
     React.useEffect(()=>{
-        setQuiz(Questions)
+        console.log(props.quiz)
+        setQuiz(props.quiz)
     },[props.start])
 
     return(

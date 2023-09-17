@@ -2,7 +2,7 @@ const Questions = [
     {
         question: "How would one say goodbye in Spanish?",
         options:[
-            {option:"Adiós", correct:true, selected:false, id:1},
+            {option:"Adios", correct:true, selected:false, id:1},
             {option:"Hola", correct:false, selected:false, id:2},
             {option:"Au Revoir", correct:false, selected:false, id:3},
             {option:"Salir", correct:false, selected:false, id:4},

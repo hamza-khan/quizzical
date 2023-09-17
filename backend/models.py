@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, DateTime, String, Boolean
+from sqlalchemy import Column, Integer, DateTime, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
@@ -16,6 +16,7 @@ class Questions(Base):
     id = Column(Integer, primary_key=True, index=True)
     question = Column(String)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    options = relationship("Options")
 
 class Options(Base):
     __tablename__ = "options"
@@ -24,4 +25,7 @@ class Options(Base):
     option = Column(String)
     selected = Column(Boolean, default=False)
     correct = Column(Boolean, default=False)
+    question_id = Column(Integer, ForeignKey("questions.id", ondelete="CASCADE"), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
