@@ -22,7 +22,7 @@ def add_a_session(db:Session, session: schemas.CreatePlaySession):
 def update_a_sesion(db:Session, session_id: int, session: schemas.CreatePlaySession):
     db_session = db.query(models.PlaySessions).filter(models.PlaySessions.id==session_id).first()
 
-    if db_session in None:
+    if db_session is None:
         return HTTPException(status_code=404, detail=f"session_id={session_id} does not exist")
     
     session_data = session.model_dump(exclude_unset=True)
@@ -38,7 +38,7 @@ def update_a_sesion(db:Session, session_id: int, session: schemas.CreatePlaySess
 def delete_a_session(db:Session, session_id:int):
     db_session = db.query(models.PlaySessions).filter(models.PlaySessions.id==session_id).first()
 
-    if db_session in None:
+    if db_session is None:
         return HTTPException(status_code=404, detail=f"session_id={session_id} does not exist. Nothing to delete")
     
     db.delete(db_session)
@@ -64,7 +64,7 @@ def add_a_question(db:Session, question: schemas.CreateQuestions):
 def update_a_question(db:Session, question_id: int, question: schemas.CreateQuestions):
     db_question = db.query(models.Questions).filter(models.Questions.id==question_id).first()
 
-    if db_question in None:
+    if db_question is None:
         return HTTPException(status_code=404, detail=f"question_id={question_id} does not exist")
     
     question_data = question.model_dump(exclude_unset=True)
@@ -80,7 +80,7 @@ def update_a_question(db:Session, question_id: int, question: schemas.CreateQues
 def delete_a_question(db:Session, question_id:int):
     db_question = db.query(models.Questions).filter(models.Questions.id==question_id).first()
 
-    if db_question in None:
+    if db_question is None:
         return HTTPException(status_code=404, detail=f"question_id={question_id} does not exist. Nothing to delete")
     
     db.delete(db_question)
@@ -106,7 +106,7 @@ def add_a_option(db:Session, option: schemas.CreateOptions):
 def update_an_option(db:Session, option_id: int, option: schemas.CreateOptions):
     db_option = db.query(models.Options).filter(models.Options.id==option_id).first()
 
-    if db_option in None:
+    if db_option is None:
         return HTTPException(status_code=404, detail=f"question_id={option_id} does not exist")
     
     option_data = option.model_dump(exclude_unset=True)
@@ -122,7 +122,7 @@ def update_an_option(db:Session, option_id: int, option: schemas.CreateOptions):
 def delete_an_option(db:Session, option_id:int):
     db_option = db.query(models.Options).filter(models.Options.id==option_id).first()
 
-    if db_option in None:
+    if db_option is None:
         return HTTPException(status_code=404, detail=f"option_id={option_id} does not exist. Nothing to delete")
     
     db.delete(db_option)

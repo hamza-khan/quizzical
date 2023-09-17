@@ -7,7 +7,7 @@ class PlaySessions(BaseModel):
     started_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class CreatePlaySession(BaseModel):
     started_at: datetime
@@ -18,7 +18,7 @@ class Questions(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class CreateQuestions(BaseModel):
     question: str
@@ -31,7 +31,7 @@ class Options(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class CreateOptions(BaseModel):
     option: str
